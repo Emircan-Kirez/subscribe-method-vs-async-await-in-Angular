@@ -35,7 +35,19 @@ export class AppComponent implements OnInit {
     this.todoService.getTodos().subscribe({
       next: (todoList: Todo[]) => console.log('length of the list: ' + todoList.length),
       complete: () => console.log('completed'),
-    })
+    });
+    console.log('just after subscribe');
+  }
+
+  // it waits for the response and then continues but it doesn't block the main thread
+  async getTodosAsync() {
+    try {
+      const data = await this.todoService.getTodosAsync();
+      console.log('Await - length of the list: ' + data.length);
+    } catch (error) {
+      console.error('🚨 Error:', error);
+    }
+    console.log('Await - completed ✅');
   }
   
 }
