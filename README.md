@@ -1,0 +1,1 @@
+# subscriber-method-in-Angular
